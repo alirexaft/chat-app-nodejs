@@ -82,12 +82,11 @@ module.exports = new class UserServices{
             
                 if (user && await bcrypt.compare(password, user.password)){
                       const token = await createToken(user._id)
-                      
-            
+
                       return await res.status(200).json({
                         message: "welcome back!",
                         data : {
-                            userId: user.id,
+                            userId: user._id,
                             token: token 
                         }
                       })
